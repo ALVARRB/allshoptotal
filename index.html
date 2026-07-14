@@ -8,23 +8,42 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0f; color: #e0e0e0; line-height: 1.6; }
-    .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+    .container { max-width: 960px; margin: 0 auto; padding: 2rem; }
     header { text-align: center; padding: 4rem 0 2rem; }
     h1 { font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .tagline { font-size: 1.1rem; color: #888; margin-top: 0.5rem; }
     .hero { text-align: center; padding: 3rem 0; }
-    .hero p { font-size: 1.2rem; max-width: 600px; margin: 1rem auto; color: #aaa; }
-    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; padding: 3rem 0; }
-    .card { background: #12121a; border: 1px solid #1e1e2a; border-radius: 12px; padding: 1.5rem; transition: border-color 0.3s; }
-    .card:hover { border-color: #667eea; }
+    .hero h2 { font-size: 1.8rem; }
+    .hero p { font-size: 1.15rem; max-width: 650px; margin: 1rem auto; color: #aaa; }
+    .section-title { text-align: center; font-size: 1.5rem; margin: 3rem 0 2rem; color: #ccc; }
+    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; padding: 0 0 2rem; }
+    .card { background: #12121a; border: 1px solid #1e1e2a; border-radius: 12px; padding: 1.5rem; transition: border-color 0.3s, transform 0.2s; }
+    .card:hover { border-color: #667eea; transform: translateY(-2px); }
     .card h3 { color: #667eea; margin-bottom: 0.5rem; }
     .card p { color: #999; font-size: 0.9rem; }
-    .status { text-align: center; padding: 2rem; }
-    .badge { display: inline-block; background: #1a1a2e; border: 1px solid #2a2a4e; padding: 0.5rem 1.5rem; border-radius: 20px; font-size: 0.85rem; color: #667eea; }
-    footer { text-align: center; padding: 3rem 0; color: #555; font-size: 0.85rem; }
+    .card .price { color: #4ade80; font-size: 1.1rem; font-weight: 600; margin-top: 0.5rem; }
+    .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; padding: 0 0 2rem; }
+    .plan { background: #12121a; border: 1px solid #1e1e2a; border-radius: 12px; padding: 2rem; text-align: center; }
+    .plan.featured { border-color: #667eea; background: linear-gradient(135deg, #12121a, #1a1a2e); }
+    .plan h3 { font-size: 1.3rem; color: #e0e0e0; }
+    .plan .price-big { font-size: 2rem; color: #4ade80; font-weight: 700; margin: 0.5rem 0; }
+    .plan .price-small { color: #888; font-size: 0.9rem; }
+    .plan ul { list-style: none; margin: 1.5rem 0; }
+    .plan li { padding: 0.5rem 0; color: #aaa; border-bottom: 1px solid #1e1e2a; }
+    .plan li:last-child { border: none; }
+    .plan .btn { display: inline-block; padding: 0.7rem 2rem; border-radius: 8px; background: #667eea; color: #fff; text-decoration: none; font-weight: 600; margin-top: 1rem; transition: background 0.3s; }
+    .plan .btn:hover { background: #5a6fd6; }
+    .cta-section { text-align: center; padding: 3rem 0; background: #12121a; border-radius: 12px; margin: 2rem 0; border: 1px solid #1e1e2a; }
+    .cta-section h2 { color: #e0e0e0; font-size: 1.5rem; }
+    .cta-section p { color: #aaa; margin: 1rem 0; }
+    .cta-section .btn-cta { display: inline-block; padding: 1rem 2.5rem; border-radius: 8px; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: opacity 0.3s; }
+    .cta-section .btn-cta:hover { opacity: 0.9; }
     .contact { text-align: center; padding: 2rem 0; }
     .contact a { color: #667eea; text-decoration: none; }
     .contact a:hover { text-decoration: underline; }
+    footer { text-align: center; padding: 3rem 0; color: #555; font-size: 0.85rem; }
+    .whatsapp-float { position: fixed; bottom: 24px; right: 24px; background: #25D366; color: #fff; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; text-decoration: none; box-shadow: 0 4px 12px rgba(37,211,102,0.3); transition: transform 0.2s; z-index: 100; }
+    .whatsapp-float:hover { transform: scale(1.1); }
   </style>
 </head>
 <body>
@@ -33,43 +52,62 @@
       <h1>AllShopTotal</h1>
       <p class="tagline">Agência Digital</p>
     </header>
-
     <section class="hero">
       <h2>Transformação digital para o seu negócio</h2>
       <p>Criamos sites, automatizamos processos, produzimos conteúdo e ajudamos sua empresa a crescer no digital — com tecnologia de ponta e atendimento próximo.</p>
     </section>
-
+    <h2 class="section-title">📦 Nossos Serviços</h2>
     <section class="services">
       <div class="card">
-        <h3>🌐 Sites</h3>
-        <p>Landing pages, institucionais e lojas virtuais. Rápidos, responsivos e otimizados para conversão.</p>
+        <h3>🌐 Sites Profissionais</h3>
+        <p>Landing pages e sites institucionais. Responsivos, rápidos e otimizados para conversão. Prontos em até 4 dias.</p>
+        <p class="price">A partir de R$ 800</p>
       </div>
       <div class="card">
-        <h3>🤖 Automação</h3>
-        <p>Chatbots, fluxos de lead, e-mail marketing e relatórios automáticos. Sua empresa trabalhando 24h.</p>
+        <h3>🤖 Automação de Atendimento</h3>
+        <p>WhatsApp integrado, chatbots e fluxos automáticos de captura de leads. Sua empresa atendendo 24h.</p>
+        <p class="price">A partir de R$ 1.000</p>
       </div>
       <div class="card">
-        <h3>📝 Conteúdo</h3>
-        <p>Artigos para blog, posts para redes sociais, newsletters e copywriting com IA de última geração.</p>
+        <h3>📝 Conteúdo Digital</h3>
+        <p>Artigos para blog, posts para redes sociais, newsletters e copywriting com IA. Presença digital consistente.</p>
+        <p class="price">A partir de R$ 200/mês</p>
       </div>
       <div class="card">
-        <h3>📊 Marketing Digital</h3>
-        <p>SEO, estratégia de conteúdo, análise de dados e gestão de redes sociais para pequenos negócios.</p>
+        <h3>🔍 Pesquisa de Mercado</h3>
+        <p>Análise de concorrência, mapeamento de oportunidades e auditoria de presença digital. Relatórios completos.</p>
+        <p class="price">A partir de R$ 400</p>
       </div>
     </section>
-
-    <div class="status">
-      <span class="badge">🚀 Em construção — breve novidades</span>
-    </div>
-
+    <h2 class="section-title">🔥 Pacote Recomendado</h2>
+    <section class="pricing">
+      <div class="plan featured">
+        <h3>🚀 Presença Digital</h3>
+        <div class="price-big">R$ 1.200</div>
+        <div class="price-small">+ R$ 150/mês de manutenção</div>
+        <ul>
+          <li>✅ Site institucional (5 páginas)</li>
+          <li>✅ WhatsApp integrado</li>
+          <li>✅ Google Maps otimizado</li>
+          <li>✅ 1 mês de conteúdo grátis</li>
+          <li>✅ Entrega em 4 dias</li>
+        </ul>
+        <a href="https://wa.me/5511999999999?text=Quero%20o%20pacote%20Presença%20Digital" class="btn" target="_blank" rel="noopener">Quero esse pacote</a>
+      </div>
+    </section>
+    <section class="cta-section">
+      <h2>🎯 Quer saber se sua empresa está pronta para o digital?</h2>
+      <p>Solicite uma <strong>auditoria gratuita</strong> de presença digital. Analisamos seu site, redes sociais e Google Maps — e mostramos o que pode melhorar. Sem compromisso.</p>
+      <a href="https://wa.me/5511999999999?text=Quero%20uma%20auditoria%20gratuita%20de%20presença%20digital" class="btn-cta" target="_blank" rel="noopener">📋 Solicitar Auditoria Grátis</a>
+    </section>
     <div class="contact">
       <p>Entre em contato: <a href="mailto:contato@allshoptotal.com.br">contato@allshoptotal.com.br</a></p>
     </div>
-
     <footer>
       <p>© 2026 AllShopTotal. Todos os direitos reservados.</p>
       <p>Feito com Opensquad — squads autônomos de IA</p>
     </footer>
   </div>
+  <a href="https://wa.me/5511999999999?text=Olá!%20Vim%20pelo%20site%20da%20AllShopTotal" class="whatsapp-float" target="_blank" rel="noopener" title="Fale conosco pelo WhatsApp">💬</a>
 </body>
 </html>
