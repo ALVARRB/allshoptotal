@@ -4,110 +4,174 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AllShopTotal — Agência Digital</title>
-  <meta name="description" content="AllShopTotal: transformação digital para pequenos e médios negócios. Sites, automação, conteúdo e marketing digital.">
+  <meta name="description" content="AllShopTotal: transformação digital para pequenos e médios negócios. Sites, automação, conteúdo e marketing digital com IA.">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0f; color: #e0e0e0; line-height: 1.6; }
-    .container { max-width: 960px; margin: 0 auto; padding: 2rem; }
-    header { text-align: center; padding: 4rem 0 2rem; }
-    h1 { font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+    nav { position: sticky; top: 0; z-index: 50; background: #0a0a0fcc; backdrop-filter: blur(12px); border-bottom: 1px solid #1e1e2a; padding: 0 2rem; }
+    nav .nav-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    nav .logo { font-weight: 700; font-size: 1.2rem; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+    nav .nav-links { display: flex; gap: 1.5rem; }
+    nav .nav-links a { color: #999; text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+    nav .nav-links a:hover { color: #667eea; }
+    section { padding: 4rem 0; }
+    .section-title { text-align: center; font-size: 1.8rem; margin-bottom: 3rem; color: #e0e0e0; }
+    .section-sub { text-align: center; color: #888; margin-top: -2rem; margin-bottom: 3rem; }
+    header { text-align: center; padding: 5rem 0 3rem; }
+    h1 { font-size: 2.8rem; font-weight: 800; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .tagline { font-size: 1.1rem; color: #888; margin-top: 0.5rem; }
-    .hero { text-align: center; padding: 3rem 0; }
-    .hero h2 { font-size: 1.8rem; }
-    .hero p { font-size: 1.15rem; max-width: 650px; margin: 1rem auto; color: #aaa; }
-    .section-title { text-align: center; font-size: 1.5rem; margin: 3rem 0 2rem; color: #ccc; }
-    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; padding: 0 0 2rem; }
-    .card { background: #12121a; border: 1px solid #1e1e2a; border-radius: 12px; padding: 1.5rem; transition: border-color 0.3s, transform 0.2s; }
-    .card:hover { border-color: #667eea; transform: translateY(-2px); }
+    .hero { text-align: center; max-width: 700px; margin: 0 auto; }
+    .hero h2 { font-size: 2rem; font-weight: 700; }
+    .hero p { font-size: 1.1rem; color: #aaa; margin: 1.5rem 0; }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 0.85rem 2rem; border-radius: 10px; font-weight: 600; text-decoration: none; font-size: 1rem; transition: all 0.3s; }
+    .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102,126,234,0.3); }
+    .btn-secondary { background: transparent; color: #667eea; border: 1px solid #667eea; }
+    .btn-secondary:hover { background: #667eea22; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center; padding: 3rem 0; border-top: 1px solid #1e1e2a; border-bottom: 1px solid #1e1e2a; }
+    .stat h3 { font-size: 2rem; color: #667eea; }
+    .stat p { color: #888; font-size: 0.9rem; margin-top: 0.3rem; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .card { background: #12121a; border: 1px solid #1e1e2a; border-radius: 12px; padding: 1.8rem; transition: all 0.3s; }
+    .card:hover { border-color: #667eea; transform: translateY(-4px); box-shadow: 0 8px 30px rgba(102,126,234,0.08); }
     .card h3 { color: #667eea; margin-bottom: 0.5rem; }
-    .card p { color: #999; font-size: 0.9rem; }
-    .card .price { color: #4ade80; font-size: 1.1rem; font-weight: 600; margin-top: 0.5rem; }
-    .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; padding: 0 0 2rem; }
-    .plan { background: #12121a; border: 1px solid #1e1e2a; border-radius: 12px; padding: 2rem; text-align: center; }
+    .card p { color: #999; font-size: 0.9rem; line-height: 1.5; }
+    .card .price { color: #4ade80; font-size: 1.1rem; font-weight: 600; margin-top: 0.8rem; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .plan { background: #12121a; border: 1px solid #1e1e2a; border-radius: 16px; padding: 2.5rem 2rem; text-align: center; position: relative; overflow: hidden; }
     .plan.featured { border-color: #667eea; background: linear-gradient(135deg, #12121a, #1a1a2e); }
-    .plan h3 { font-size: 1.3rem; color: #e0e0e0; }
-    .plan .price-big { font-size: 2rem; color: #4ade80; font-weight: 700; margin: 0.5rem 0; }
-    .plan .price-small { color: #888; font-size: 0.9rem; }
-    .plan ul { list-style: none; margin: 1.5rem 0; }
-    .plan li { padding: 0.5rem 0; color: #aaa; border-bottom: 1px solid #1e1e2a; }
-    .plan li:last-child { border: none; }
-    .plan .btn { display: inline-block; padding: 0.7rem 2rem; border-radius: 8px; background: #667eea; color: #fff; text-decoration: none; font-weight: 600; margin-top: 1rem; transition: background 0.3s; }
-    .plan .btn:hover { background: #5a6fd6; }
-    .cta-section { text-align: center; padding: 3rem 0; background: #12121a; border-radius: 12px; margin: 2rem 0; border: 1px solid #1e1e2a; }
-    .cta-section h2 { color: #e0e0e0; font-size: 1.5rem; }
-    .cta-section p { color: #aaa; margin: 1rem 0; }
-    .cta-section .btn-cta { display: inline-block; padding: 1rem 2.5rem; border-radius: 8px; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: opacity 0.3s; }
-    .cta-section .btn-cta:hover { opacity: 0.9; }
+    .plan .badge { position: absolute; top: 12px; right: 12px; background: #667eea; color: #fff; font-size: 0.7rem; padding: 0.25rem 0.75rem; border-radius: 20px; font-weight: 600; }
+    .plan h3 { font-size: 1.4rem; color: #e0e0e0; }
+    .plan .price-big { font-size: 2.5rem; color: #4ade80; font-weight: 800; margin: 0.8rem 0 0.3rem; }
+    .plan .price-small { color: #888; font-size: 0.85rem; }
+    .plan ul { list-style: none; margin: 1.8rem 0; text-align: left; }
+    .plan li { padding: 0.5rem 0; color: #ccc; font-size: 0.9rem; }
+    .plan .btn-plan { display: inline-block; padding: 0.8rem 2.5rem; border-radius: 10px; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; text-decoration: none; font-weight: 600; transition: all 0.3s; }
+    .plan .btn-plan:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102,126,234,0.3); }
+    .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .case-card { background: #12121a; border: 1px solid #1e1e2a; border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+    .case-card:hover { border-color: #667eea; transform: translateY(-4px); }
+    .case-preview { height: 160px; background: linear-gradient(135deg, #1a1a2e, #252540); display: flex; align-items: center; justify-content: center; color: #556; font-size: 3rem; }
+    .case-body { padding: 1.5rem; }
+    .case-body h4 { color: #e0e0e0; margin-bottom: 0.3rem; }
+    .case-body p { color: #999; font-size: 0.85rem; }
+    .case-tag { display: inline-block; background: #667eea22; color: #667eea; font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin-top: 0.5rem; }
+    .blog-card { background: #12121a; border: 1px solid #1e1e2a; border-radius: 12px; padding: 2rem; max-width: 600px; margin: 0 auto; transition: all 0.3s; }
+    .blog-card:hover { border-color: #667eea; }
+    .blog-card h3 { color: #667eea; }
+    .blog-card p { color: #999; font-size: 0.9rem; margin: 0.8rem 0; }
+    .blog-card .blog-link { color: #667eea; text-decoration: none; font-weight: 600; }
+    .blog-card .blog-link:hover { text-decoration: underline; }
+    .cta-section { text-align: center; padding: 4rem 0; background: linear-gradient(135deg, #12121a, #1a1a2e); border-radius: 16px; margin: 2rem 0; border: 1px solid #667eea33; }
+    .cta-section h2 { font-size: 1.8rem; color: #e0e0e0; }
+    .cta-section p { color: #aaa; margin: 1rem 0 2rem; font-size: 1.05rem; }
     .contact { text-align: center; padding: 2rem 0; }
     .contact a { color: #667eea; text-decoration: none; }
     .contact a:hover { text-decoration: underline; }
-    footer { text-align: center; padding: 3rem 0; color: #555; font-size: 0.85rem; }
-    .whatsapp-float { position: fixed; bottom: 24px; right: 24px; background: #25D366; color: #fff; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; text-decoration: none; box-shadow: 0 4px 12px rgba(37,211,102,0.3); transition: transform 0.2s; z-index: 100; }
+    .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+    .social-links a { color: #555; text-decoration: none; font-size: 1.5rem; transition: color 0.3s; }
+    .social-links a:hover { color: #667eea; }
+    footer { text-align: center; padding: 3rem 0 5rem; color: #555; font-size: 0.85rem; }
+    footer a { color: #667eea; text-decoration: none; }
+    .whatsapp-float { position: fixed; bottom: 24px; right: 24px; background: #25D366; color: #fff; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; text-decoration: none; box-shadow: 0 4px 16px rgba(37,211,102,0.35); transition: transform 0.2s; z-index: 100; }
     .whatsapp-float:hover { transform: scale(1.1); }
+    @media (max-width: 640px) { nav .nav-links { display: none; } h1 { font-size: 2rem; } .hero h2 { font-size: 1.4rem; } .stats { grid-template-columns: 1fr; gap: 1rem; } }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>AllShopTotal</h1>
-      <p class="tagline">Agência Digital</p>
-    </header>
-    <section class="hero">
-      <h2>Transformação digital para o seu negócio</h2>
-      <p>Criamos sites, automatizamos processos, produzimos conteúdo e ajudamos sua empresa a crescer no digital — com tecnologia de ponta e atendimento próximo.</p>
-    </section>
-    <h2 class="section-title">📦 Nossos Serviços</h2>
-    <section class="services">
-      <div class="card">
-        <h3>🌐 Sites Profissionais</h3>
-        <p>Landing pages e sites institucionais. Responsivos, rápidos e otimizados para conversão. Prontos em até 4 dias.</p>
-        <p class="price">A partir de R$ 800</p>
-      </div>
-      <div class="card">
-        <h3>🤖 Automação de Atendimento</h3>
-        <p>WhatsApp integrado, chatbots e fluxos automáticos de captura de leads. Sua empresa atendendo 24h.</p>
-        <p class="price">A partir de R$ 1.000</p>
-      </div>
-      <div class="card">
-        <h3>📝 Conteúdo Digital</h3>
-        <p>Artigos para blog, posts para redes sociais, newsletters e copywriting com IA. Presença digital consistente.</p>
-        <p class="price">A partir de R$ 200/mês</p>
-      </div>
-      <div class="card">
-        <h3>🔍 Pesquisa de Mercado</h3>
-        <p>Análise de concorrência, mapeamento de oportunidades e auditoria de presença digital. Relatórios completos.</p>
-        <p class="price">A partir de R$ 400</p>
-      </div>
-    </section>
-    <h2 class="section-title">🔥 Pacote Recomendado</h2>
-    <section class="pricing">
-      <div class="plan featured">
-        <h3>🚀 Presença Digital</h3>
-        <div class="price-big">R$ 1.200</div>
-        <div class="price-small">+ R$ 150/mês de manutenção</div>
-        <ul>
-          <li>✅ Site institucional (5 páginas)</li>
-          <li>✅ WhatsApp integrado</li>
-          <li>✅ Google Maps otimizado</li>
-          <li>✅ 1 mês de conteúdo grátis</li>
-          <li>✅ Entrega em 4 dias</li>
-        </ul>
-        <a href="https://wa.me/5511999999999?text=Quero%20o%20pacote%20Presença%20Digital" class="btn" target="_blank" rel="noopener">Quero esse pacote</a>
-      </div>
-    </section>
-    <section class="cta-section">
-      <h2>🎯 Quer saber se sua empresa está pronta para o digital?</h2>
-      <p>Solicite uma <strong>auditoria gratuita</strong> de presença digital. Analisamos seu site, redes sociais e Google Maps — e mostramos o que pode melhorar. Sem compromisso.</p>
-      <a href="https://wa.me/5511999999999?text=Quero%20uma%20auditoria%20gratuita%20de%20presença%20digital" class="btn-cta" target="_blank" rel="noopener">📋 Solicitar Auditoria Grátis</a>
-    </section>
-    <div class="contact">
-      <p>Entre em contato: <a href="mailto:contato@allshoptotal.com.br">contato@allshoptotal.com.br</a></p>
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">AllShopTotal</a>
+    <div class="nav-links">
+      <a href="#servicos">Servicos</a>
+      <a href="#cases">Cases</a>
+      <a href="#blog">Blog</a>
+      <a href="#contato">Contato</a>
     </div>
-    <footer>
-      <p>© 2026 AllShopTotal. Todos os direitos reservados.</p>
-      <p>Feito com Opensquad — squads autônomos de IA</p>
-    </footer>
   </div>
-  <a href="https://wa.me/5511999999999?text=Olá!%20Vim%20pelo%20site%20da%20AllShopTotal" class="whatsapp-float" target="_blank" rel="noopener" title="Fale conosco pelo WhatsApp">💬</a>
+</nav>
+<div class="container">
+  <header>
+    <h1>AllShopTotal</h1>
+    <p class="tagline">Agencia Digital com Inteligencia Artificial</p>
+  </header>
+  <section class="hero" id="hero">
+    <h2>Sites, automacao e conteudo que realmente funcionam</h2>
+    <p>Usamos IA de ponta para entregar resultados rapidos para pequenos e medios negocios. Site pronto em 4 dias. Sem burocracia. Sem promessas vazias.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/5511999999999?text=Quero%20saber%20mais" class="btn btn-primary" target="_blank" rel="noopener">📱 Fale Conosco</a>
+      <a href="#servicos" class="btn btn-secondary">📦 Ver Servicos</a>
+    </div>
+  </section>
+  <section class="stats">
+    <div class="stat"><h3>3</h3><p>Squads de IA especializados</p></div>
+    <div class="stat"><h3>4</h3><p>Dias para entregar seu site</p></div>
+    <div class="stat"><h3>100%</h3><p>Foco em resultado real</p></div>
+  </section>
+  <section id="servicos">
+    <h2 class="section-title">📦 Nossos Servicos</h2>
+    <div class="services-grid">
+      <div class="card"><h3>🌐 Sites Profissionais</h3><p>Landing pages e sites institucionais responsivos. Otimizados para conversao e Google. Prontos em ate 4 dias.</p><p class="price">A partir de R$ 800</p></div>
+      <div class="card"><h3>🤖 Automacao de Atendimento</h3><p>WhatsApp integrado, chatbots inteligentes e fluxos de captura de leads. Sua empresa atendendo 24 horas por dia.</p><p class="price">A partir de R$ 1.000</p></div>
+      <div class="card"><h3>📝 Conteudo Digital</h3><p>Artigos para blog, posts para redes sociais, newsletters e copywriting com IA. Presenca digital consistente e profissional.</p><p class="price">A partir de R$ 200/mes</p></div>
+      <div class="card"><h3>🔍 Pesquisa de Mercado</h3><p>Analise de concorrencia, mapeamento de oportunidades e auditoria completa de presenca digital. Relatorios acionaveis.</p><p class="price">A partir de R$ 400</p></div>
+    </div>
+  </section>
+  <h2 class="section-title" style="margin-top:3rem;">🔥 Pacote Recomendado</h2>
+  <p class="section-sub">O mais contratado — ideal para quem quer comecar com presenca digital profissional</p>
+  <section class="pricing-grid">
+    <div class="plan featured">
+      <span class="badge">Mais popular</span>
+      <h3>🚀 Presenca Digital</h3>
+      <div class="price-big">R$ 1.200</div>
+      <div class="price-small">+ R$ 150/mes de manutencao</div>
+      <ul>
+        <li>✅ Site institucional completo (5 paginas)</li>
+        <li>✅ WhatsApp integrado com botao flutuante</li>
+        <li>✅ Google Maps otimizado para aparecer nas buscas</li>
+        <li>✅ 1 mes de conteudo gratis para redes sociais</li>
+        <li>✅ Entrega garantida em 4 dias uteis</li>
+      </ul>
+      <a href="https://wa.me/5511999999999?text=Quero%20o%20pacote%20Presenca%20Digital" class="btn-plan" target="_blank" rel="noopener">✔ Quero esse pacote</a>
+    </div>
+  </section>
+  <section id="cases">
+    <h2 class="section-title">📋 Cases</h2>
+    <p class="section-sub">Projetos que entregamos — seu case pode ser o proximo</p>
+    <div class="cases-grid">
+      <div class="case-card"><div class="case-preview">🚀</div><div class="case-body"><h4>AllShopTotal</h4><p>Nosso proprio site — agencia digital com IA integrada.</p><span class="case-tag">🌐 Site</span></div></div>
+      <div class="case-card"><div class="case-preview">✍️</div><div class="case-body"><h4>Artigo: Hermes Agent</h4><p>Guia completo de 10 formas de ganhar dinheiro com IA. 3.500 palavras.</p><span class="case-tag">📝 Conteudo</span></div></div>
+      <div class="case-card"><div class="case-preview">🤖</div><div class="case-body"><h4>Seu projeto aqui</h4><p>Quer ser nosso proximo case? Fale conosco e vamos construir juntos.</p><span class="case-tag">💬 Em breve</span></div></div>
+    </div>
+  </section>
+  <section id="blog">
+    <h2 class="section-title">📝 Blog</h2>
+    <div class="blog-card">
+      <h3>10 maneiras de ganhar dinheiro com o Hermes Agent</h3>
+      <p>Guia pratico mostrando como usar inteligencia artificial gratuita para gerar renda — sem investimento inicial. Desde freela de desenvolvimento ate agencia de automacao.</p>
+      <a href="#" class="blog-link">Ler artigo completo →</a>
+    </div>
+  </section>
+  <section class="cta-section">
+    <h2>🎯 Quer saber se sua empresa esta pronta para o digital?</h2>
+    <p>Solicite uma <strong>auditoria gratuita</strong> de presenca digital. Analisamos seu site, redes sociais e Google Maps — e mostramos exatamente o que pode melhorar, sem compromisso.</p>
+    <a href="https://wa.me/5511999999999?text=Quero%20uma%20auditoria%20gratuita" class="btn btn-primary" target="_blank" rel="noopener" style="font-size:1.1rem;padding:1rem 2.5rem;">📋 Solicitar Auditoria Gratis</a>
+  </section>
+  <section id="contato">
+    <div class="contact">
+      <p>📧 <a href="mailto:contato@allshoptotal.com.br">contato@allshoptotal.com.br</a></p>
+      <p>💬 <a href="https://wa.me/5511999999999" target="_blank" rel="noopener">WhatsApp</a></p>
+      <div class="social-links"><a href="#" title="Instagram">📸</a><a href="#" title="LinkedIn">💼</a><a href="#" title="GitHub">🐙</a></div>
+    </div>
+  </section>
+  <footer>
+    <p>© 2026 AllShopTotal. Todos os direitos reservados.</p>
+    <p>Feito com <a href="https://hermes-agent.nousresearch.com">Hermes Agent</a> + Opensquad</p>
+  </footer>
+</div>
+<a href="https://wa.me/5511999999999?text=Ola!%20Vim%20pelo%20site" class="whatsapp-float" target="_blank" rel="noopener" title="Fale conosco pelo WhatsApp">💬</a>
 </body>
 </html>
