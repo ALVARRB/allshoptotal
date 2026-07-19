@@ -3,175 +3,1264 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AllShopTotal — Agência Digital</title>
-  <meta name="description" content="AllShopTotal: transformação digital para pequenos e médios negócios. Sites, automação, conteúdo e marketing digital com IA.">
+  <title>AllShopTotal — Sites, CRM e Automações que geram vendas</title>
+  <meta name="description" content="Agência digital focada em performance. Criamos sites que convertem, CRM próprio integrado e automações com IA para negócios locais em Foz do Iguaçu.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0f; color: #e0e0e0; line-height: 1.6; }
-    .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
-    nav { position: sticky; top: 0; z-index: 50; background: #0a0a0fcc; backdrop-filter: blur(12px); border-bottom: 1px solid #1e1e2a; padding: 0 2rem; }
-    nav .nav-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
-    nav .logo { font-weight: 700; font-size: 1.2rem; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
-    nav .nav-links { display: flex; gap: 1.5rem; }
-    nav .nav-links a { color: #999; text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
-    nav .nav-links a:hover { color: #667eea; }
-    section { padding: 4rem 0; }
-    .section-title { text-align: center; font-size: 1.8rem; margin-bottom: 3rem; color: #e0e0e0; }
-    .section-sub { text-align: center; color: #888; margin-top: -2rem; margin-bottom: 3rem; }
-    header { text-align: center; padding: 5rem 0 3rem; }
-    h1 { font-size: 2.8rem; font-weight: 800; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .tagline { font-size: 1.1rem; color: #888; margin-top: 0.5rem; }
-    .hero { text-align: center; max-width: 700px; margin: 0 auto; }
-    .hero h2 { font-size: 2rem; font-weight: 700; }
-    .hero p { font-size: 1.1rem; color: #aaa; margin: 1.5rem 0; }
-    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn { display: inline-block; padding: 0.85rem 2rem; border-radius: 10px; font-weight: 600; text-decoration: none; font-size: 1rem; transition: all 0.3s; }
-    .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102,126,234,0.3); }
-    .btn-secondary { background: transparent; color: #667eea; border: 1px solid #667eea; }
-    .btn-secondary:hover { background: #667eea22; }
-    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center; padding: 3rem 0; border-top: 1px solid #1e1e2a; border-bottom: 1px solid #1e1e2a; }
-    .stat h3 { font-size: 2rem; color: #667eea; }
-    .stat p { color: #888; font-size: 0.9rem; margin-top: 0.3rem; }
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-    .card { background: #12121a; border: 1px solid #1e1e2a; border-radius: 12px; padding: 1.8rem; transition: all 0.3s; }
-    .card:hover { border-color: #667eea; transform: translateY(-4px); box-shadow: 0 8px 30px rgba(102,126,234,0.08); }
-    .card h3 { color: #667eea; margin-bottom: 0.5rem; }
-    .card p { color: #999; font-size: 0.9rem; line-height: 1.5; }
-    .card .price { color: #4ade80; font-size: 1.1rem; font-weight: 600; margin-top: 0.8rem; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-    .plan { background: #12121a; border: 1px solid #1e1e2a; border-radius: 16px; padding: 2.5rem 2rem; text-align: center; position: relative; overflow: hidden; }
-    .plan.featured { border-color: #667eea; background: linear-gradient(135deg, #12121a, #1a1a2e); }
-    .plan .badge { position: absolute; top: 12px; right: 12px; background: #667eea; color: #fff; font-size: 0.7rem; padding: 0.25rem 0.75rem; border-radius: 20px; font-weight: 600; }
-    .plan h3 { font-size: 1.4rem; color: #e0e0e0; }
-    .plan .price-big { font-size: 2.5rem; color: #4ade80; font-weight: 800; margin: 0.8rem 0 0.3rem; }
-    .plan .price-small { color: #888; font-size: 0.85rem; }
-    .plan ul { list-style: none; margin: 1.8rem 0; text-align: left; }
-    .plan li { padding: 0.5rem 0; color: #ccc; font-size: 0.9rem; }
-    .plan .btn-plan { display: inline-block; padding: 0.8rem 2.5rem; border-radius: 10px; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; text-decoration: none; font-weight: 600; transition: all 0.3s; }
-    .plan .btn-plan:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102,126,234,0.3); }
-    .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-    .case-card { background: #12121a; border: 1px solid #1e1e2a; border-radius: 12px; overflow: hidden; transition: all 0.3s; }
-    .case-card:hover { border-color: #667eea; transform: translateY(-4px); }
-    .case-preview { height: 160px; background: linear-gradient(135deg, #1a1a2e, #252540); display: flex; align-items: center; justify-content: center; color: #556; font-size: 3rem; }
-    .case-body { padding: 1.5rem; }
-    .case-body h4 { color: #e0e0e0; margin-bottom: 0.3rem; }
-    .case-body p { color: #999; font-size: 0.85rem; }
-    .case-tag { display: inline-block; background: #667eea22; color: #667eea; font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin-top: 0.5rem; }
-    .blog-card { background: #12121a; border: 1px solid #1e1e2a; border-radius: 12px; padding: 2rem; max-width: 600px; margin: 0 auto; transition: all 0.3s; }
-    .blog-card:hover { border-color: #667eea; }
-    .blog-card h3 { color: #667eea; }
-    .blog-card p { color: #999; font-size: 0.9rem; margin: 0.8rem 0; }
-    .blog-card .blog-link { color: #667eea; text-decoration: none; font-weight: 600; }
-    .blog-card .blog-link:hover { text-decoration: underline; }
-    .cta-section { text-align: center; padding: 4rem 0; background: linear-gradient(135deg, #12121a, #1a1a2e); border-radius: 16px; margin: 2rem 0; border: 1px solid #667eea33; }
-    .cta-section h2 { font-size: 1.8rem; color: #e0e0e0; }
-    .cta-section p { color: #aaa; margin: 1rem 0 2rem; font-size: 1.05rem; }
-    .contact { text-align: center; padding: 2rem 0; }
-    .contact a { color: #667eea; text-decoration: none; }
-    .contact a:hover { text-decoration: underline; }
-    .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
-    .social-links a { color: #555; text-decoration: none; font-size: 1.5rem; transition: color 0.3s; }
-    .social-links a:hover { color: #667eea; }
-    footer { text-align: center; padding: 3rem 0 5rem; color: #555; font-size: 0.85rem; }
-    footer a { color: #667eea; text-decoration: none; }
-    .whatsapp-float { position: fixed; bottom: 24px; right: 24px; background: #25D366; color: #fff; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; text-decoration: none; box-shadow: 0 4px 16px rgba(37,211,102,0.35); transition: transform 0.2s; z-index: 100; }
-    .whatsapp-float:hover { transform: scale(1.1); }
-    @media (max-width: 640px) { nav .nav-links { display: none; } h1 { font-size: 2rem; } .hero h2 { font-size: 1.4rem; } .stats { grid-template-columns: 1fr; gap: 1rem; } }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: rgb(254, 253, 251);
+      color: rgb(26, 26, 26);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
+
+    /* ===== LAYOUT ===== */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgb(196, 93, 53);
+      border: 1px solid rgba(196, 93, 53, 0.25);
+      border-radius: 999px;
+      padding: 4px 14px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      max-width: 640px;
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: rgb(154, 148, 137);
+      max-width: 560px;
+      margin-bottom: 48px;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: rgb(196, 93, 53);
+      color: rgb(247, 244, 237);
+    }
+    .btn-primary:hover {
+      background: rgb(170, 78, 42);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(196, 93, 53, 0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      color: rgb(247, 244, 237);
+      border: 1.5px solid rgba(247, 244, 237, 0.3);
+    }
+    .btn-outline:hover {
+      background: rgba(247, 244, 237, 0.08);
+      border-color: rgb(247, 244, 237);
+    }
+    .btn-outline-dark {
+      background: transparent;
+      color: rgb(26, 26, 26);
+      border: 1.5px solid rgb(26, 26, 26);
+    }
+    .btn-outline-dark:hover {
+      background: rgb(26, 26, 26);
+      color: rgb(247, 244, 237);
+    }
+    .btn-secondary {
+      background: rgb(122, 158, 126);
+      color: rgb(247, 244, 237);
+    }
+    .btn-secondary:hover {
+      background: rgb(100, 135, 104);
+      transform: translateY(-1px);
+    }
+    .btn-lg { padding: 16px 36px; font-size: 1rem; }
+
+    /* ===== NAVIGATION ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(247, 244, 237, 0.06);
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: rgb(247, 244, 237);
+    }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(247, 244, 237, 0.7);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: rgb(247, 244, 237); }
+    .nav-cta {
+      background: rgb(196, 93, 53);
+      color: rgb(247, 244, 237) !important;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: rgb(170, 78, 42) !important; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-toggle span { width: 24px; height: 2px; background: rgb(247, 244, 237); border-radius: 2px; transition: 0.3s; }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: rgb(26, 26, 26);
+      color: rgb(247, 244, 237);
+      padding: 140px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(196, 93, 53, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgb(122, 158, 126);
+      border: 1px solid rgba(122, 158, 126, 0.3);
+      border-radius: 999px;
+      padding: 6px 16px;
+      margin-bottom: 24px;
+    }
+    .hero-badge a {
+      color: rgb(196, 93, 53);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero h1 { margin-bottom: 20px; }
+    .hero h1 .highlight { color: rgb(196, 93, 53); }
+    .hero p {
+      font-size: 1.1rem;
+      color: rgb(154, 148, 137);
+      margin-bottom: 32px;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-stat {
+      text-align: center;
+    }
+    .hero-stat-value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: rgb(247, 244, 237);
+    }
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: rgb(154, 148, 137);
+      margin-top: 4px;
+    }
+    .hero-visual {
+      position: relative;
+    }
+    .hero-dashboard {
+      background: rgba(247, 244, 237, 0.05);
+      border: 1px solid rgba(247, 244, 237, 0.1);
+      border-radius: 16px;
+      padding: 28px;
+      backdrop-filter: blur(4px);
+    }
+    .hero-dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(247, 244, 237, 0.08);
+    }
+    .hero-dashboard-dots { display: flex; gap: 6px; }
+    .hero-dashboard-dots span { width: 10px; height: 10px; border-radius: 50%; }
+    .hero-dashboard-dots span:nth-child(1) { background: rgb(196, 93, 53); }
+    .hero-dashboard-dots span:nth-child(2) { background: rgb(122, 158, 126); }
+    .hero-dashboard-dots span:nth-child(3) { background: rgba(247, 244, 237, 0.2); }
+    .hero-dashboard-title { font-size: 0.8rem; color: rgba(247, 244, 237, 0.5); letter-spacing: 0.05em; }
+    .hero-dashboard-chart { display: flex; gap: 12px; align-items: flex-end; height: 120px; }
+    .hero-dashboard-bar {
+      flex: 1;
+      border-radius: 4px 4px 0 0;
+      min-height: 20px;
+      transition: height 0.5s;
+    }
+    .hero-dashboard-bar:nth-child(1) { height: 60px; background: rgba(196, 93, 53, 0.6); }
+    .hero-dashboard-bar:nth-child(2) { height: 90px; background: rgba(196, 93, 53, 0.8); }
+    .hero-dashboard-bar:nth-child(3) { height: 70px; background: rgba(196, 93, 53, 0.5); }
+    .hero-dashboard-bar:nth-child(4) { height: 110px; background: rgba(196, 93, 53, 0.9); }
+    .hero-dashboard-bar:nth-child(5) { height: 45px; background: rgba(196, 93, 53, 0.4); }
+    .hero-dashboard-bar:nth-child(6) { height: 95px; background: rgba(196, 93, 53, 0.7); }
+    .hero-dashboard-bar:nth-child(7) { height: 80px; background: rgba(122, 158, 126, 0.7); }
+    .hero-dashboard-save {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      font-size: 0.8rem;
+      color: rgb(122, 158, 126);
+      background: rgba(122, 158, 126, 0.1);
+      padding: 6px 14px;
+      border-radius: 999px;
+    }
+
+    /* ===== BADGES ROW ===== */
+    .badges-row {
+      background: rgb(247, 244, 237);
+      border-top: 1px solid rgba(196, 191, 182, 0.3);
+      border-bottom: 1px solid rgba(196, 191, 182, 0.3);
+      padding: 24px 0;
+    }
+    .badges-row .container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .badge-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgb(26, 26, 26);
+    }
+    .badge-item svg { flex-shrink: 0; }
+
+    /* ===== SERVICES ===== */
+    .services { background: rgb(254, 253, 251); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: rgb(247, 244, 237);
+      border: 1px solid rgba(196, 191, 182, 0.3);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.25s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(26, 26, 26, 0.06);
+    }
+    .service-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .service-badge.core { background: rgba(122, 158, 126, 0.15); color: rgb(122, 158, 126); }
+    .service-badge.available { background: rgba(196, 93, 53, 0.12); color: rgb(196, 93, 53); }
+    .service-badge.soon { background: rgba(154, 148, 137, 0.15); color: rgb(154, 148, 137); }
+    .service-card h3 { margin-bottom: 12px; }
+    .service-card p {
+      font-size: 0.9rem;
+      color: rgb(154, 148, 137);
+      line-height: 1.6;
+    }
+    .service-card ul {
+      margin-top: 16px;
+    }
+    .service-card ul li {
+      font-size: 0.85rem;
+      color: rgb(74, 74, 74);
+      padding: 4px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    .service-card ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: rgb(122, 158, 126);
+      font-weight: 700;
+    }
+
+    /* ===== COMPARISON ===== */
+    .comparison { background: rgb(26, 26, 26); color: rgb(247, 244, 237); }
+    .comparison .section-label { border-color: rgba(196, 93, 53, 0.4); }
+    .comparison .section-subtitle { color: rgba(247, 244, 237, 0.5); }
+    .comparison-table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(247, 244, 237, 0.08);
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .comparison-table th {
+      padding: 16px 20px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(247, 244, 237, 0.04);
+      border-bottom: 1px solid rgba(247, 244, 237, 0.08);
+    }
+    .comparison-table th:first-child { color: rgba(247, 244, 237, 0.5); }
+    .comparison-table th.highlight { color: rgb(122, 158, 126); }
+    .comparison-table td {
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(247, 244, 237, 0.05);
+    }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table td:first-child { color: rgba(247, 244, 237, 0.7); font-weight: 500; }
+    .comparison-table .check { color: rgb(122, 158, 126); }
+    .comparison-table .cross { color: rgba(247, 244, 237, 0.2); }
+    .comparison-table .highlight { color: rgb(247, 244, 237); font-weight: 600; }
+    .comparison-savings {
+      text-align: center;
+      margin-top: 32px;
+      padding: 20px;
+      background: rgba(122, 158, 126, 0.08);
+      border: 1px solid rgba(122, 158, 126, 0.2);
+      border-radius: 12px;
+    }
+    .comparison-savings strong {
+      font-size: 1.5rem;
+      color: rgb(122, 158, 126);
+    }
+
+    /* ===== PRICING ===== */
+    .pricing { background: rgb(247, 244, 237); }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+    .pricing-card {
+      background: rgb(254, 253, 251);
+      border: 1px solid rgba(196, 191, 182, 0.3);
+      border-radius: 16px;
+      padding: 36px 32px;
+      position: relative;
+      transition: all 0.25s ease;
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(26, 26, 26, 0.06);
+    }
+    .pricing-card.popular {
+      border-color: rgb(196, 93, 53);
+      border-width: 2px;
+    }
+    .pricing-popular-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgb(196, 93, 53);
+      color: rgb(247, 244, 237);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 16px;
+      border-radius: 999px;
+    }
+    .pricing-card-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgb(122, 158, 126);
+      margin-bottom: 12px;
+    }
+    .pricing-card h3 { margin-bottom: 8px; }
+    .pricing-desc {
+      font-size: 0.85rem;
+      color: rgb(154, 148, 137);
+      margin-bottom: 24px;
+      min-height: 40px;
+    }
+    .pricing-amount {
+      margin-bottom: 24px;
+    }
+    .pricing-setup {
+      font-size: 2rem;
+      font-weight: 800;
+      color: rgb(26, 26, 26);
+    }
+    .pricing-setup small {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgb(154, 148, 137);
+    }
+    .pricing-monthly {
+      font-size: 1rem;
+      color: rgb(154, 148, 137);
+      margin-top: 4px;
+    }
+    .pricing-card .btn {
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .pricing-features li {
+      font-size: 0.85rem;
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+      border-bottom: 1px solid rgba(196, 191, 182, 0.15);
+    }
+    .pricing-features li:last-child { border-bottom: none; }
+    .pricing-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: rgb(122, 158, 126);
+      font-weight: 700;
+    }
+    .pricing-note {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: rgb(154, 148, 137);
+    }
+    .pricing-note a {
+      color: rgb(196, 93, 53);
+      text-decoration: underline;
+    }
+
+    /* ===== OPEN SOURCE / DIFERENCIAIS ===== */
+    .open-source { background: rgb(26, 26, 26); color: rgb(247, 244, 237); }
+    .open-source .section-label { border-color: rgba(122, 158, 126, 0.4); color: rgb(122, 158, 126); }
+    .open-source .section-subtitle { color: rgba(247, 244, 237, 0.5); }
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .diff-item {
+      text-align: center;
+      padding: 32px 20px;
+      background: rgba(247, 244, 237, 0.04);
+      border: 1px solid rgba(247, 244, 237, 0.06);
+      border-radius: 12px;
+    }
+    .diff-item-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+    .diff-item h4 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+    .diff-item p {
+      font-size: 0.85rem;
+      color: rgba(247, 244, 237, 0.5);
+    }
+    .code-block {
+      background: rgba(247, 244, 237, 0.04);
+      border: 1px solid rgba(247, 244, 237, 0.08);
+      border-radius: 12px;
+      padding: 24px;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.85rem;
+      line-height: 1.8;
+      color: rgba(247, 244, 237, 0.7);
+      max-width: 640px;
+      margin: 0 auto 32px;
+    }
+    .code-block .prompt { color: rgb(122, 158, 126); }
+    .code-block .cmd { color: rgb(247, 244, 237); }
+    .code-block .comment { color: rgba(247, 244, 237, 0.35); }
+    .open-source-ctas {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ===== FAQ ===== */
+    .faq { background: rgb(254, 253, 251); }
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border: 1px solid rgba(196, 191, 182, 0.3);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      background: rgb(247, 244, 237);
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgb(26, 26, 26);
+      text-align: left;
+      transition: background 0.2s;
+    }
+    .faq-question:hover { background: rgb(240, 237, 229); }
+    .faq-question svg {
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .faq-item.open .faq-question svg { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 0 24px 20px;
+    }
+    .faq-answer p {
+      font-size: 0.9rem;
+      color: rgb(74, 74, 74);
+      line-height: 1.7;
+    }
+
+    /* ===== CTA FINAL ===== */
+    .cta-final {
+      background: rgb(26, 26, 26);
+      color: rgb(247, 244, 237);
+      text-align: center;
+      padding: 100px 0;
+    }
+    .cta-final h2 {
+      margin-bottom: 16px;
+    }
+    .cta-final p {
+      color: rgb(154, 148, 137);
+      font-size: 1.1rem;
+      margin-bottom: 36px;
+    }
+    .cta-final-badges {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    .cta-final-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: rgba(247, 244, 237, 0.5);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: rgb(26, 26, 26);
+      border-top: 1px solid rgba(247, 244, 237, 0.06);
+      padding: 64px 0 32px;
+      color: rgb(247, 244, 237);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: rgb(154, 148, 137);
+      margin: 16px 0 20px;
+      max-width: 280px;
+    }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 1px solid rgba(247, 244, 237, 0.1);
+      color: rgba(247, 244, 237, 0.5);
+      transition: all 0.2s;
+    }
+    .footer-social a:hover {
+      border-color: rgb(196, 93, 53);
+      color: rgb(196, 93, 53);
+    }
+    .footer-col h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(247, 244, 237, 0.4);
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.85rem;
+      color: rgba(247, 244, 237, 0.6);
+      padding: 4px 0;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: rgb(247, 244, 237); }
+    .footer-bottom {
+      border-top: 1px solid rgba(247, 244, 237, 0.06);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.8rem;
+      color: rgba(247, 244, 237, 0.35);
+    }
+    .footer-bottom a { color: rgba(247, 244, 237, 0.35); }
+    .footer-bottom a:hover { color: rgb(247, 244, 237); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      section { padding: 60px 0; }
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-stats { justify-content: center; }
+      .hero-ctas { justify-content: center; }
+      .hero p { text-align: center; margin-left: auto; margin-right: auto; }
+      .hero h1 { text-align: center; }
+      .hero-badge { margin-left: auto; margin-right: auto; }
+      .hero-visual { order: -1; }
+      .badges-row .container { gap: 20px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .hero-ctas .btn { width: 100%; justify-content: center; }
+    }
   </style>
 </head>
 <body>
-<nav>
-  <div class="nav-inner">
-    <a href="#" class="logo">AllShopTotal</a>
-    <div class="nav-links">
-      <a href="#servicos">Servicos</a>
-      <a href="#cases">Cases</a>
-      <a href="#blog">Blog</a>
-      <a href="#contato">Contato</a>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="6" fill="rgb(196,93,53)"/>
+          <path d="M7 14h4l2-5 3 10 2-5h3" stroke="rgb(247,244,237)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        AllShopTotal
+      </a>
+      <div class="nav-links">
+        <a href="#servicos">Serviços</a>
+        <a href="#precos">Preços</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://wa.me/554599415349" target="_blank" class="nav-cta">Falar no WhatsApp</a>
+      </div>
+      <div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="hero-badge">
+            AGÊNCIA DIGITAL &bull; FOZ DO IGUAÇU
+          </div>
+          <h1>Sites, CRM e <span class="highlight">Automações</span> que geram vendas</h1>
+          <p>
+            Sua agência de performance digital. Criamos sites que convertem, 
+            implementamos CRM próprio e automatizamos seu atendimento com IA 
+            — tudo integrado, em até 7 dias.
+          </p>
+          <div class="hero-ctas">
+            <a href="#precos" class="btn btn-primary btn-lg">VER PLANOS</a>
+            <a href="https://wa.me/554599415349" target="_blank" class="btn btn-outline btn-lg">FALAR CONOSCO</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-value">7 dias</div>
+              <div class="hero-stat-label">Entrega média</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value">100%</div>
+              <div class="hero-stat-label">Seus dados</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value">CRM</div>
+              <div class="hero-stat-label">Incluso nos planos</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-dashboard">
+            <div class="hero-dashboard-header">
+              <div class="hero-dashboard-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="hero-dashboard-title">LEADS NOS ÚLTIMOS 7 DIAS</div>
+            </div>
+            <div class="hero-dashboard-chart">
+              <div class="hero-dashboard-bar"></div>
+              <div class="hero-dashboard-bar"></div>
+              <div class="hero-dashboard-bar"></div>
+              <div class="hero-dashboard-bar"></div>
+              <div class="hero-dashboard-bar"></div>
+              <div class="hero-dashboard-bar"></div>
+              <div class="hero-dashboard-bar"></div>
+            </div>
+            <div class="hero-dashboard-save">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 1v7l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+              Leads crescendo +40% no primeiro mês
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BADGES ROW ===== -->
+  <div class="badges-row">
+    <div class="container">
+      <div class="badge-item">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="9" stroke="rgb(122,158,126)" stroke-width="1.5" fill="none"/>
+          <path d="M6 10l3 3 5-5" stroke="rgb(122,158,126)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Entrega em até 7 dias
+      </div>
+      <div class="badge-item">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="9" stroke="rgb(122,158,126)" stroke-width="1.5" fill="none"/>
+          <path d="M6 10l3 3 5-5" stroke="rgb(122,158,126)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        WhatsApp incluso
+      </div>
+      <div class="badge-item">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="9" stroke="rgb(122,158,126)" stroke-width="1.5" fill="none"/>
+          <path d="M6 10l3 3 5-5" stroke="rgb(122,158,126)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Suporte direto com fundador
+      </div>
+      <div class="badge-item">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="9" stroke="rgb(122,158,126)" stroke-width="1.5" fill="none"/>
+          <path d="M6 10l3 3 5-5" stroke="rgb(122,158,126)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Atendimento local (Foz)
+      </div>
     </div>
   </div>
-</nav>
-<div class="container">
-  <header>
-    <h1>AllShopTotal</h1>
-    <p class="tagline">Agencia Digital com Inteligencia Artificial</p>
-  </header>
-  <section class="hero" id="hero">
-    <h2>Sites, automacao e conteudo que realmente funcionam</h2>
-    <p>Usamos IA de ponta para entregar resultados rapidos para pequenos e medios negocios. Site pronto em 4 dias. Sem burocracia. Sem promessas vazias.</p>
-    <div class="hero-btns">
-      <a href="https://wa.me/554599415349?text=Quero%20saber%20mais" class="btn btn-primary" target="_blank" rel="noopener">📱 Fale Conosco</a>
-      <a href="#servicos" class="btn btn-secondary">📦 Ver Servicos</a>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="servicos">
+    <div class="container">
+      <span class="section-label">SERVIÇOS</span>
+      <h2 class="section-title">Tudo que seu negócio precisa para vender mais</h2>
+      <p class="section-subtitle">Soluções completas de marketing digital integradas em um só lugar. Sem terceirização, sem mensalidades abusivas.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-badge core">PRONTO</span>
+          <h3>Site Institucional</h3>
+          <p>Site profissional responsivo, otimizado para conversão com SEO local, WhatsApp integrado e formulário inteligente.</p>
+          <ul>
+            <li>4-6 páginas responsivas</li>
+            <li>SEO local (Google Meu Negócio)</li>
+            <li>WhatsApp flutuante</li>
+            <li>Formulário com captura CRM</li>
+            <li>Google Analytics + Pixel</li>
+            <li>Hospedagem inclusa (1 ano)</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <span class="service-badge core">PRONTO</span>
+          <h3>CRM AllShopTotal</h3>
+          <p>CRM próprio, open source, ilimitado. Gerencie leads, contatos, tickets e vendas em um só lugar — seus dados, seu controle.</p>
+          <ul>
+            <li>Contatos e leads ilimitados</li>
+            <li>Gestão de tickets (helpdesk)</li>
+            <li>Pipeline de vendas visual</li>
+            <li>Magic link + Google OAuth</li>
+            <li>API REST + Webhooks</li>
+            <li>100% dos seus dados</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <span class="service-badge available">LANÇAMENTO</span>
+          <h3>Automação com IA</h3>
+          <p>Chatbot inteligente que qualifica leads, responde perguntas frequentes e agenda reuniões no WhatsApp e no site.</p>
+          <ul>
+            <li>Chatbot para site</li>
+            <li>Respostas automáticas WhatsApp</li>
+            <li>Lead criado no CRM</li>
+            <li>Gatilhos de follow-up</li>
+            <li>Dashboard de conversas</li>
+            <li>Integração total</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <span class="service-badge core">PRONTO</span>
+          <h3>Manutenção & Conteúdo</h3>
+          <p>Pacote mensal de performance digital: SEO contínuo, atualizações de conteúdo e monitoramento 24/7.</p>
+          <ul>
+            <li>2 atualizações de blog/mês</li>
+            <li>Relatório mensal de performance</li>
+            <li>Monitoramento de uptime</li>
+            <li>Correção de erros técnicos</li>
+            <li>Otimização de velocidade</li>
+            <li>Suporte direto prioritário</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
-  <section class="stats">
-    <div class="stat"><h3>3</h3><p>Squads de IA especializados</p></div>
-    <div class="stat"><h3>4</h3><p>Dias para entregar seu site</p></div>
-    <div class="stat"><h3>100%</h3><p>Foco em resultado real</p></div>
-  </section>
-  <section id="servicos">
-    <h2 class="section-title">📦 Nossos Servicos</h2>
-    <div class="services-grid">
-      <div class="card"><h3>🌐 Sites Profissionais</h3><p>Landing pages e sites institucionais responsivos. Otimizados para conversao e Google. Prontos em ate 4 dias.</p><p class="price">A partir de R$ 800</p></div>
-      <div class="card"><h3>🤖 Automacao de Atendimento</h3><p>WhatsApp integrado, chatbots inteligentes e fluxos de captura de leads. Sua empresa atendendo 24 horas por dia.</p><p class="price">A partir de R$ 1.000</p></div>
-      <div class="card"><h3>📝 Conteudo Digital</h3><p>Artigos para blog, posts para redes sociais, newsletters e copywriting com IA. Presenca digital consistente e profissional.</p><p class="price">A partir de R$ 200/mes</p></div>
-      <div class="card"><h3>🔍 Pesquisa de Mercado</h3><p>Analise de concorrencia, mapeamento de oportunidades e auditoria completa de presenca digital. Relatorios acionaveis.</p><p class="price">A partir de R$ 400</p></div>
+
+  <!-- ===== COMPARISON ===== -->
+  <section class="comparison" id="comparacao">
+    <div class="container">
+      <span class="section-label">COMPARAÇÃO</span>
+      <h2 class="section-title">Veja o que você realmente paga</h2>
+      <p class="section-subtitle">Agências tradicionais cobram caro por sites bonitos que não geram leads. Nós entregamos performance mensurável por um preço justo.</p>
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>SOLUÇÃO</th>
+              <th>SETUP</th>
+              <th>MENSAL</th>
+              <th>CRM INCLUSO</th>
+              <th>SUPORTE DIRETO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="highlight">AllShopTotal</span> <span style="color:rgb(122,158,126);font-size:0.7rem;font-weight:600;margin-left:6px;">RECOMENDADO</span></td>
+              <td><span class="highlight">R$ 4.497</span></td>
+              <td><span class="highlight">R$ 247/mês</span></td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Agência Tradicional</td>
+              <td>R$ 5.000 - 15.000</td>
+              <td>R$ 200 - 500/mês</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+            </tr>
+            <tr>
+              <td>Site + CRM separados</td>
+              <td>R$ 3.000 + R$ 1.500</td>
+              <td>R$ 150 + R$ 200/mês</td>
+              <td class="check">✓</td>
+              <td class="cross">✗</td>
+            </tr>
+            <tr>
+              <td>Plataformas自助 (Wix/GoDaddy)</td>
+              <td>R$ 1.000 - 3.000</td>
+              <td>R$ 100 - 300/mês</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="comparison-savings">
+        Economia anual estimada: <strong>R$ 3.000 — R$ 15.000+</strong> comparado a soluções tradicionais
+      </div>
     </div>
   </section>
-  <h2 class="section-title" style="margin-top:3rem;">🔥 Pacote Recomendado</h2>
-  <p class="section-sub">O mais contratado — ideal para quem quer comecar com presenca digital profissional</p>
-  <section class="pricing-grid">
-    <div class="plan featured">
-      <span class="badge">Mais popular</span>
-      <h3>🚀 Presenca Digital</h3>
-      <div class="price-big">R$ 1.200</div>
-      <div class="price-small">+ R$ 150/mes de manutencao</div>
-      <ul>
-        <li>✅ Site institucional completo (5 paginas)</li>
-        <li>✅ WhatsApp integrado com botao flutuante</li>
-        <li>✅ Google Maps otimizado para aparecer nas buscas</li>
-        <li>✅ 1 mes de conteudo gratis para redes sociais</li>
-        <li>✅ Entrega garantida em 4 dias uteis</li>
-      </ul>
-      <a href="https://wa.me/554599415349?text=Quero%20o%20pacote%20Presenca%20Digital" class="btn-plan" target="_blank" rel="noopener">✔ Quero esse pacote</a>
+
+  <!-- ===== PRICING ===== -->
+  <section class="pricing" id="precos">
+    <div class="container">
+      <span class="section-label">PREÇOS</span>
+      <h2 class="section-title">Planos que cabem no seu bolso</h2>
+      <p class="section-subtitle">Escolha o combo ideal para seu negócio. Setup único + mensalidade acessível. Sem surpresas, sem taxas escondidas.</p>
+      <div class="pricing-grid">
+        <!-- Básico -->
+        <div class="pricing-card">
+          <div class="pricing-card-badge">COMEÇANDO</div>
+          <h3>Básico</h3>
+          <p class="pricing-desc">Site institucional + CRM completo. Perfeito para quem está começando a digitalizar o negócio.</p>
+          <div class="pricing-amount">
+            <div class="pricing-setup">R$ 4.497 <small>setup</small></div>
+            <div class="pricing-monthly">+ R$ 247/mês</div>
+          </div>
+          <a href="https://wa.me/554599415349?text=Quero%20o%20plano%20B%C3%A1sico%20da%20AllShopTotal" target="_blank" class="btn btn-primary">QUERO ESTE PLANO</a>
+          <ul class="pricing-features">
+            <li>Site institucional (4-6 páginas)</li>
+            <li>SEO local otimizado</li>
+            <li>WhatsApp flutuante</li>
+            <li>CRM AllShopTotal ilimitado</li>
+            <li>Gestão de leads e contatos</li>
+            <li>Pipeline de vendas</li>
+            <li>Suporte direto via WhatsApp</li>
+            <li>Hospedagem inclusa (1 ano)</li>
+          </ul>
+        </div>
+
+        <!-- Profissional (Popular) -->
+        <div class="pricing-card popular">
+          <div class="pricing-popular-badge">MAIS POPULAR</div>
+          <div class="pricing-card-badge" style="color:rgb(196,93,53);">RECOMENDADO</div>
+          <h3>Profissional</h3>
+          <p class="pricing-desc">Site + CRM + Chatbot com IA. Ideal para negócios que querem automatizar o atendimento.</p>
+          <div class="pricing-amount">
+            <div class="pricing-setup">R$ 5.497 <small>setup</small></div>
+            <div class="pricing-monthly">+ R$ 347/mês</div>
+          </div>
+          <a href="https://wa.me/554599415349?text=Quero%20o%20plano%20Profissional%20da%20AllShopTotal" target="_blank" class="btn btn-primary">QUERO ESTE PLANO</a>
+          <ul class="pricing-features">
+            <li>Tudo do Básico</li>
+            <li>Chatbot de qualificação com IA</li>
+            <li>Respostas automáticas WhatsApp</li>
+            <li>Lead criado automaticamente no CRM</li>
+            <li>Gatilhos de follow-up</li>
+            <li>Dashboard de conversas</li>
+            <li>Relatórios de performance</li>
+            <li>Suporte prioritário</li>
+          </ul>
+        </div>
+
+        <!-- Premium -->
+        <div class="pricing-card">
+          <div class="pricing-card-badge">COMPLETO</div>
+          <h3>Premium</h3>
+          <p class="pricing-desc">Tudo incluso: site, CRM, automação, manutenção e conteúdo. Solução completa para crescer.</p>
+          <div class="pricing-amount">
+            <div class="pricing-setup">R$ 5.497 <small>setup</small></div>
+            <div class="pricing-monthly">+ R$ 447/mês</div>
+          </div>
+          <a href="https://wa.me/554599415349?text=Quero%20o%20plano%20Premium%20da%20AllShopTotal" target="_blank" class="btn btn-secondary">QUERO ESTE PLANO</a>
+          <ul class="pricing-features">
+            <li>Tudo do Profissional</li>
+            <li>Manutenção mensal completa</li>
+            <li>2 atualizações de blog/mês</li>
+            <li>Monitoramento 24/7</li>
+            <li>Correção de erros técnicos</li>
+            <li>Otimização de velocidade</li>
+            <li>Relatório mensal detalhado</li>
+            <li>Suporte prioritário direto</li>
+          </ul>
+        </div>
+      </div>
+      <p class="pricing-note">
+        Precisa de algo customizado? <a href="https://wa.me/554599415349" target="_blank">Fale conosco no WhatsApp</a> para um orçamento personalizado.
+      </p>
     </div>
   </section>
-  <section id="cases">
-    <h2 class="section-title">📋 Cases</h2>
-    <p class="section-sub">Projetos que entregamos — seu case pode ser o proximo</p>
-    <div class="cases-grid">
-      <div class="case-card"><div class="case-preview">🚀</div><div class="case-body"><h4>AllShopTotal</h4><p>Nosso proprio site — agencia digital com IA integrada.</p><span class="case-tag">🌐 Site</span></div></div>
-      <div class="case-card"><div class="case-preview">✍️</div><div class="case-body"><h4>Artigo: Hermes Agent</h4><p>Guia completo de 10 formas de ganhar dinheiro com IA. 3.500 palavras.</p><span class="case-tag">📝 Conteudo</span></div></div>
-      <div class="case-card"><div class="case-preview">🤖</div><div class="case-body"><h4>Seu projeto aqui</h4><p>Quer ser nosso proximo case? Fale conosco e vamos construir juntos.</p><span class="case-tag">💬 Em breve</span></div></div>
+
+  <!-- ===== DIFERENCIAIS ===== -->
+  <section class="open-source" id="diferenciais">
+    <div class="container">
+      <span class="section-label">DIFERENCIAIS</span>
+      <h2 class="section-title">Por que escolher a AllShopTotal?</h2>
+      <p class="section-subtitle">Não somos mais uma agência de sites bonitos. Somos uma fábrica de resultados.</p>
+      <div class="diff-grid">
+        <div class="diff-item">
+          <div class="diff-item-icon">🚀</div>
+          <h4>Entrega Rápida</h4>
+          <p>Seu site no ar em até 7 dias. Não em 30, 60 ou 90 dias como as agências tradicionais.</p>
+        </div>
+        <div class="diff-item">
+          <div class="diff-item-icon">🔧</div>
+          <h4>CRM Próprio</h4>
+          <p>CRM open source ilimitado incluso nos planos. Seus dados, suas regras, seu controle.</p>
+        </div>
+        <div class="diff-item">
+          <div class="diff-item-icon">🤖</div>
+          <h4>Automação com IA</h4>
+          <p>Chatbot inteligente que qualifica leads 24h por dia e integra direto com seu CRM.</p>
+        </div>
+        <div class="diff-item">
+          <div class="diff-item-icon">💬</div>
+          <h4>Suporte Direto</h4>
+          <p>Você fala direto com o fundador. Nada de atendimento robotizado ou suporte terceirizado.</p>
+        </div>
+      </div>
+      <div class="code-block">
+        <div><span class="comment"># Seu novo site no ar em 7 dias</span></div>
+        <div><span class="prompt">$</span> <span class="cmd">você escolhe o plano</span></div>
+        <div><span class="prompt">$</span> <span class="cmd">nós criamos seu site + CRM</span></div>
+        <div><span class="prompt">$</span> <span class="cmd">seus leads começam a chegar</span></div>
+        <div><span class="comment"># Pronto. Simples assim.</span></div>
+      </div>
+      <div class="open-source-ctas">
+        <a href="#precos" class="btn btn-primary btn-lg">VER PLANOS</a>
+        <a href="https://wa.me/554599415349" target="_blank" class="btn btn-outline btn-lg">FALAR CONOSCO</a>
+      </div>
     </div>
   </section>
-  <section id="blog">
-    <h2 class="section-title">📝 Blog</h2>
-    <div class="blog-card">
-      <h3>10 maneiras de ganhar dinheiro com o Hermes Agent</h3>
-      <p>Guia pratico mostrando como usar inteligencia artificial gratuita para gerar renda — sem investimento inicial. Desde freela de desenvolvimento ate agencia de automacao.</p>
-      <a href="/allshoptotal/blog/hermes-agent-10-maneiras.html" class="blog-link">Ler artigo completo →</a>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title">Perguntas Frequentes</h2>
+      <p class="section-subtitle">Tire suas dúvidas sobre nossos serviços, planos e entregas.</p>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Quanto tempo leva para meu site ficar pronto?
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>Em média 7 dias úteis para o plano Básico. O Profissional (com chatbot) leva até 10 dias, e o Premium até 14 dias. Trabalhamos com entregas rápidas porque usamos tecnologia moderna e processos otimizados — nada de esperar meses.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            O CRM é realmente gratuito e ilimitado?
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>Sim. O CRM AllShopTotal é baseado no BottleCRM, open source (MIT), e não tem limite de usuários, contatos ou armazenamento. Seus dados são 100% seus — nós apenas hospedamos e mantemos para você.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Como funciona o chatbot com IA?
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>O chatbot usa inteligência artificial para responder perguntas frequentes dos seus clientes automaticamente, 24 horas por dia. Ele qualifica o lead, coleta dados de contato e já cria o registro no CRM — sem intervenção manual. Disponível no site e no WhatsApp.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Preciso pagar mensalidade para sempre?
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>Não. A mensalidade cobre hospedagem, manutenção, suporte e atualizações. Se você quiser cancelar, o site continua no ar (você pode migrar para outro servidor). O CRM é seu — exportamos seus dados a qualquer momento. Sem multa, sem burocracia.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Atendem apenas Foz do Iguaçu?
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>Nosso foco é Foz do Iguaçu e região, pois oferecemos suporte presencial quando necessário. Mas atendemos clientes em todo o Brasil remotamente — tudo é feito online, com reuniões por vídeo e suporte via WhatsApp.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Como é o suporte? Tenho dúvidas depois do site no ar?
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>O suporte é direto com o Alvaro (fundador) via WhatsApp. Nada de chatbot frustrante ou atendimento genérico. Você tem acesso direto a quem construiu seu site e configurou seu CRM. Respondemos em minutos, não horas ou dias.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
-  <section class="cta-section">
-    <h2>🎯 Quer saber se sua empresa esta pronta para o digital?</h2>
-    <p>Solicite uma <strong>auditoria gratuita</strong> de presenca digital. Analisamos seu site, redes sociais e Google Maps — e mostramos exatamente o que pode melhorar, sem compromisso.</p>
-    <a href="https://wa.me/554599415349?text=Quero%20uma%20auditoria%20gratuita" class="btn btn-primary" target="_blank" rel="noopener" style="font-size:1.1rem;padding:1rem 2.5rem;">📋 Solicitar Auditoria Gratis</a>
-  </section>
-  <section id="contato">
-    <div class="contact">
-      <p>📧 <a href="mailto:all.shp.total@gmail.com">all.shp.total@gmail.com</a></p>
-      <p>💬 <a href="https://wa.me/554599415349" target="_blank" rel="noopener">WhatsApp</a></p>
-      <div class="social-links"><a href="#" title="Instagram">📸</a><a href="#" title="LinkedIn">💼</a><a href="#" title="GitHub">🐙</a></div>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section class="cta-final">
+    <div class="container">
+      <h2>Pronto para vender mais?</h2>
+      <p>Seu site profissional, CRM completo e automação com IA. Tudo integrado, em até 7 dias.<br>Sem mensalidades abusivas. Sem complicação.</p>
+      <a href="https://wa.me/554599415349?text=Quero%20saber%20mais%20sobre%20a%20AllShopTotal" target="_blank" class="btn btn-primary btn-lg">FALAR NO WHATSAPP</a>
+      <div class="cta-final-badges">
+        <span class="cta-final-badge">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8l3 3 7-7" stroke="rgb(122,158,126)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Sem fidelidade obrigatória
+        </span>
+        <span class="cta-final-badge">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8l3 3 7-7" stroke="rgb(122,158,126)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Seus dados 100% seus
+        </span>
+        <span class="cta-final-badge">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8l3 3 7-7" stroke="rgb(122,158,126)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Suporte direto via WhatsApp
+        </span>
+      </div>
     </div>
   </section>
+
+  <!-- ===== FOOTER ===== -->
   <footer>
-    <p>© 2026 AllShopTotal. Todos os direitos reservados.</p>
-    <p>Feito com <a href="https://hermes-agent.nousresearch.com">Hermes Agent</a> + Opensquad</p>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.1rem;">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="6" fill="rgb(196,93,53)"/>
+              <path d="M7 14h4l2-5 3 10 2-5h3" stroke="rgb(247,244,237)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            AllShopTotal
+          </div>
+          <p>Agência digital focada em performance. Criamos sites, CRMs e automações que geram vendas para negócios locais.</p>
+          <div class="footer-social">
+            <a href="https://wa.me/554599415349" target="_blank" aria-label="WhatsApp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+            <a href="https://github.com/alvarrb" target="_blank" aria-label="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="mailto:all.shop.total@gmail.com" aria-label="Email">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>PRODUTO</h4>
+          <a href="#servicos">Site Institucional</a>
+          <a href="#servicos">CRM AllShopTotal</a>
+          <a href="#servicos">Automação IA</a>
+          <a href="#servicos">Manutenção</a>
+          <a href="#precos">Preços</a>
+        </div>
+        <div class="footer-col">
+          <h4>RECURSOS</h4>
+          <a href="#faq">FAQ</a>
+          <a href="https://wa.me/554599415349">Suporte</a>
+          <a href="https://crm.allshoptotal.com.br">Acessar CRM</a>
+          <a href="https://github.com/alvarrb">GitHub</a>
+        </div>
+        <div class="footer-col">
+          <h4>CONTATO</h4>
+          <a href="https://wa.me/554599415349">WhatsApp</a>
+          <a href="mailto:all.shop.total@gmail.com">all.shop.total@gmail.com</a>
+          <a href="#">Foz do Iguaçu, PR</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 AllShopTotal. Todos os direitos reservados.</span>
+        <span>
+          <a href="#">Privacidade</a> &middot; <a href="#">Termos</a>
+        </span>
+      </div>
+    </div>
   </footer>
-</div>
-<a href="https://wa.me/554599415349?text=Ola!%20Vim%20pelo%20site" class="whatsapp-float" target="_blank" rel="noopener" title="Fale conosco pelo WhatsApp">💬</a>
+
+  <!-- ===== MOBILE NAV TOGGLE ===== -->
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function() {
+      const nav = document.querySelector('.nav-links');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    });
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        document.querySelector('.nav-links').style.display = 'flex';
+      }
+    });
+  </script>
+
 </body>
 </html>
